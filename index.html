@@ -17,6 +17,7 @@
             color: white;
             min-height: 100vh;
             overflow-x: hidden;
+            cursor: none; /* Скрываем стандартный курсор */
         }
 
         .container {
@@ -191,6 +192,30 @@
             animation-delay: 2s;
         }
 
+        /* Стили для анимированной Мику */
+        .miku-follower {
+            position: fixed;
+            width: 150px;
+            height: 150px;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease-out;
+            transform-origin: center center;
+        }
+
+        .miku-follower img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.7));
+            animation: mikuFloat 2s infinite ease-in-out;
+        }
+
+        @keyframes mikuFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-15px); }
@@ -212,6 +237,11 @@
             .miku-images {
                 grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
             }
+            
+            .miku-follower {
+                width: 100px;
+                height: 100px;
+            }
         }
     </style>
 </head>
@@ -221,16 +251,7 @@
         <img src="https://i.imgur.com/1qTc6Qx.png" alt="Hatsune Miku">
     </div>
     
-    <div class="container">
-        <header>
-            <h1>Сум@шедш!й резонанс†</h1>
-            <div class="subtitle">Полный Пайтон разработчик</div>
-            <div class="miku-note note1">♫</div>
-            <div class="miku-note note2">♪</div>
-            <div class="miku-note note3">♬</div>
-        </header>
-        
-        <div class="profile-section">
+    <div class="profile-section">
             <div class="miku-images">
                 <div class="miku-image">
                     <img src="https://media.tenor.com/AIHWOa8aHFAAAAAi/miku-hatsune.gif" alt="Hatsune Miku 1">
@@ -284,7 +305,7 @@
     </div>
     
     <footer>
-        <p>Сайт посвящен Хатсуне Мику | 2023</p>
+        <p>Сайт посвящен Хатсуне Мику | 2025</p>
     </footer>
 
     <script>
@@ -333,4 +354,4 @@
         animateMiku();
     </script>
 </body>
-</html>
+</html>    
