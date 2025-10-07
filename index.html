@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сум@шедш!й резонанс† | Hatsune Miku</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #00ffff, #39c5bb, #00a2ff);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+
+        .profile-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .miku-images {
+            flex: 1;
+            min-width: 300px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .miku-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .miku-image:hover {
+            transform: scale(1.05);
+        }
+
+        .miku-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .info-card {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .info-card h2 {
+            color: #39c5bb;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(57, 197, 187, 0.5);
+        }
+
+        .info-item {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #00ffff;
+            margin-right: 10px;
+        }
+
+        .portfolio-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .portfolio-btn {
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .portfolio-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-buttons {
+            display: none;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .project-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 12px 25px;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+        }
+
+        .project-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .miku-note {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.7;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        .note1 {
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .note2 {
+            top: 15%;
+            right: 10%;
+            animation-delay: 1s;
+        }
+
+        .note3 {
+            bottom: 20%;
+            left: 8%;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .profile-section {
+                flex-direction: column;
+            }
+            
+            .miku-images {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Хатсуне Мику</h1>
+            <div class="subtitle">Виртуальная певица</div>
+            <div class="miku-note note1">♫</div>
+            <div class="miku-note note2">♪</div>
+            <div class="miku-note note3">♬</div>
+        </header>
+        
+        <div class="profile-section">
+            <div class="miku-images">
+                <div class="miku-image">
+                    <img src="https://media.tenor.com/AIHWOa8aHFAAAAAi/miku-hatsune.gif" alt="Hatsune Miku 1">
+                </div>
+                <div class="miku-image">
+                    <img src="https://media1.tenor.com/m/YmOgbuKVENkAAAAC/miku-rule8-rule8.gif" alt="Hatsune Miku 2">
+                </div>
+                <div class="miku-image">
+                    <img src="https://media.tenor.com/rSYM03_nRcEAAAAi/mi.gif" alt="Hatsune Miku 3">
+                </div>
+                <div class="miku-image">
+                    <img src="https://media.tenor.com/yz1hrVPqABEAAAAi/miku-shooting-no-background.gif" alt="Hatsune Miku 4">
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <h2>Bio REZOH3HCA</h2>
+                <div class="info-item">
+                    <span class="info-label">Name:</span>Сум@шедш!й резонанс†
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Contact:</span> @PEZOH3HC
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Profession:</span> Python/HTML Developer
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Country:</span> UKRAINE
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Number:</span> +380XXXXXXXXX
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Age:</span> 16
+                </div>
+            </div>
+        </div>
+        
+        <div class="portfolio-section">
+            <button class="portfolio-btn" id="portfolioBtn">Мое портфолио</button>
+            
+            <div class="project-buttons" id="projectButtons">
+                <a href="https://maaevgenia676-spec.github.io/nullsmodsv2/" class="project-btn" target="_blank">
+                    Генератор модов Нулс Бравл
+                </a>
+                <a href="https://github.com/maaevgenia676-spec/MikuBrowser" class="project-btn" target="_blank">
+                    Miku Browser
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Сайт посвящен Хатсуне Мику | 2023</p>
+    </footer>
+
+    <script>
+        document.getElementById('portfolioBtn').addEventListener('click', function() {
+            const projectButtons = document.getElementById('projectButtons');
+            if (projectButtons.style.display === 'flex') {
+                projectButtons.style.display = 'none';
+            } else {
+                projectButtons.style.display = 'flex';
+            }
+        });
+    </script>
+</body>
+</html>
