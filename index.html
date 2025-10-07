@@ -10,6 +10,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            cursor: none !important;
         }
 
         body {
@@ -17,7 +18,6 @@
             color: white;
             min-height: 100vh;
             overflow-x: hidden;
-            cursor: none; /* Скрываем стандартный курсор */
         }
 
         .container {
@@ -66,6 +66,11 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 150px;
         }
 
         .miku-image:hover {
@@ -195,25 +200,48 @@
         /* Стили для анимированной Мику */
         .miku-follower {
             position: fixed;
-            width: 150px;
-            height: 150px;
+            width: 70px;
+            height: 70px;
             pointer-events: none;
             z-index: 9999;
-            transition: transform 0.1s ease-out;
+            transition: transform 0.0s ease-out;
             transform-origin: center center;
         }
 
         .miku-follower img {
-            width: 100%;
-            height: 100%;
+            width: 70%;
+            height: 70%;
             object-fit: contain;
             filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.7));
             animation: mikuFloat 2s infinite ease-in-out;
+            transition: opacity 0.0s ease;
+        }
+
+        .miku-follower .miku-normal {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .miku-follower .miku-hover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+
+        .miku-follower.hover .miku-normal {
+            opacity: 0;
+        }
+
+        .miku-follower.hover .miku-hover {
+            opacity: 1;
         }
 
         @keyframes mikuFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-5px) rotate(2deg); }
+            75% { transform: translateY(5px) rotate(-2deg); }
         }
 
         @keyframes float {
@@ -239,8 +267,8 @@
             }
             
             .miku-follower {
-                width: 100px;
-                height: 100px;
+                width: 70px;
+                height: 70px;
             }
         }
     </style>
@@ -248,10 +276,20 @@
 <body>
     <!-- Анимированная Мику, следующая за курсором -->
     <div class="miku-follower" id="mikuFollower">
-        <img src="https://sweezy-cursors.com/wp-content/uploads/cursor/auto-draft/hatsune-miku-x-among-us-custom-cursor.png" alt="Hatsune Miku">
+        <img src="https://github.com/maaevgenia676-spec/MyBio/blob/main/Hatsune%20Miku%20x%20Among%20Us--cursor--SweezyCursors.png?raw=true" alt="Hatsune Miku" class="miku-normal">
+        <img src="https://github.com/maaevgenia676-spec/MyBio/blob/main/Hatsune%20Miku%20x%20Among%20Us--pointer--SweezyCursors.png?raw=true" alt="Hatsune Miku Hover" class="miku-hover">
     </div>
     
-    <div class="profile-section">
+    <div class="container">
+        <header>
+            <h1>Сум@шедш!й резонанс†</h1>
+            <div class="subtitle">Пайнтон Разработчик</div>
+            <div class="miku-note note1">♫</div>
+            <div class="miku-note note2">♪</div>
+            <div class="miku-note note3">♬</div>
+        </header>
+        
+        <div class="profile-section">
             <div class="miku-images">
                 <div class="miku-image">
                     <img src="https://media.tenor.com/AIHWOa8aHFAAAAAi/miku-hatsune.gif" alt="Hatsune Miku 1">
@@ -335,8 +373,8 @@
         // Анимация движения Мику
         function animateMiku() {
             // Плавное движение к курсору с небольшим отставанием
-            mikuX += (mouseX - mikuX - 75) * 0.1; // 75 - половина ширины изображения
-            mikuY += (mouseY - mikuY - 75) * 0.1; // 75 - половина высоты изображения
+            mikuX += (mouseX - mikuX - 50) * 0.1; // 50 - половина ширины изображения
+            mikuY += (mouseY - mikuY - 50) * 0.1; // 50 - половина высоты изображения
             
             // Применяем позицию
             mikuFollower.style.left = mikuX + 'px';
@@ -352,6 +390,18 @@
         
         // Запускаем анимацию
         animateMiku();
+        
+        // Добавляем смену изображения при наведении на кликабельные элементы
+        const clickableElements = document.querySelectorAll('a, button, .miku-image');
+        clickableElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                mikuFollower.classList.add('hover');
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                mikuFollower.classList.remove('hover');
+            });
+        });
     </script>
 </body>
-</html>    
+</html>
