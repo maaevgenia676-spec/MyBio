@@ -283,6 +283,7 @@
     </footer>
 
     <script>
+        // Функционал кнопки портфолио
         document.getElementById('portfolioBtn').addEventListener('click', function() {
             const projectButtons = document.getElementById('projectButtons');
             if (projectButtons.style.display === 'flex') {
@@ -291,6 +292,40 @@
                 projectButtons.style.display = 'flex';
             }
         });
+
+        // Анимация Мику, следующей за курсором
+        const mikuFollower = document.getElementById('mikuFollower');
+        let mouseX = 0;
+        let mouseY = 0;
+        let mikuX = 0;
+        let mikuY = 0;
+        
+        // Следим за движением мыши
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        
+        // Анимация движения Мику
+        function animateMiku() {
+            // Плавное движение к курсору с небольшим отставанием
+            mikuX += (mouseX - mikuX - 75) * 0.1; // 75 - половина ширины изображения
+            mikuY += (mouseY - mikuY - 75) * 0.1; // 75 - половина высоты изображения
+            
+            // Применяем позицию
+            mikuFollower.style.left = mikuX + 'px';
+            mikuFollower.style.top = mikuY + 'px';
+            
+            // Плавное вращение в зависимости от движения
+            const rotateX = (mouseY - mikuY) * 0.01;
+            const rotateY = (mouseX - mikuX) * 0.01;
+            mikuFollower.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            
+            requestAnimationFrame(animateMiku);
+        }
+        
+        // Запускаем анимацию
+        animateMiku();
     </script>
 </body>
 </html>
